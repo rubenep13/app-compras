@@ -1,0 +1,38 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Llista de la compra</ion-title>
+    <ion-buttons slot="end">
+      <ion-button color="danger" fill="solid" (click)="forceError()">
+        <ion-icon name="alert"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-fab vertical="bottom" horizontal="end" slot="fixed">
+    <ion-fab-button routerLink="/add">
+      <ion-icon name="add"></ion-icon>
+    </ion-fab-button>
+  </ion-fab>
+  <ion-list>
+
+    <ion-item-sliding *ngFor="let item of items">
+
+      <ion-item  routerLink="/detail">
+        <ion-label>{{item.name}}</ion-label>
+        <ion-badge slot="start">{{item.amount}}x</ion-badge>
+        <ion-label slot="end">{{item.total_price}} €</ion-label>
+      </ion-item>
+  
+      <ion-item-options side="end">
+        <ion-item-option color="danger" (click)="delete(item)">
+          <ion-icon slot="start" name="trash-outline"></ion-icon>
+          Delete
+        </ion-item-option>
+      </ion-item-options>
+      
+    </ion-item-sliding>
+
+  </ion-list>
+</ion-content>
